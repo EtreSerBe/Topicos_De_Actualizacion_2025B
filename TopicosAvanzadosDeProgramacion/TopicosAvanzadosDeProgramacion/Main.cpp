@@ -12,6 +12,7 @@ using namespace std;
 #include "ClaseEjemplo.h"
 #include "Array.h"
 #include "DynamicArray.h"
+#include "Ejercicio1.h"
 
 #define MY_ARRAY2_SIZE 20
 
@@ -263,10 +264,15 @@ void ImprimirSinChecar()
 }
 
 
+
+
+
 // Breakpoint -> break = romper ; point = punto; punto de quiebre
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	MainEjercicio1();
+
 
 	DynamicArray<int> dynamicArray = DynamicArray<int>(64); // se inicia con DYNAMIC_ARRAY_DEFAULT_SIZE de capacidad, es decir 4
 	for (int i = 0; i < 1000000; i++)
