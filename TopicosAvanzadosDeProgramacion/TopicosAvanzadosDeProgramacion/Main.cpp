@@ -265,12 +265,33 @@ void ImprimirSinChecar()
 
 
 
+void JuevesYAntesDeMediodia(int dia, int hora, int minuto)
+{
+	// Si es jueves Y es antes del mediodía
+	if (dia == 3 /*3 es jueves*/ && (hora < 12 || hora == 11 && minuto <= 59))
+	{
 
+	}
+
+	if(hora < 12)
+
+	// 12:01 es después del mediodía
+	// 12:00 es después del mediodía porque inmediatamente pasan instantes y ya es después del mediodía
+	// 11:59 es antes del mediodía
+
+	//     if (hora < 12 || (hora == 11 && minuto <= 59)) {
+
+}
 
 // Breakpoint -> break = romper ; point = punto; punto de quiebre
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+
+
+
+
+
 	MainEjercicio1();
 
 
