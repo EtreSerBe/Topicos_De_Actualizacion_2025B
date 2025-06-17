@@ -2,6 +2,7 @@
 
 #define DYNAMIC_ARRAY_DEFAULT_SIZE 4
 
+
 template <typename T>
 class DynamicArray
 {

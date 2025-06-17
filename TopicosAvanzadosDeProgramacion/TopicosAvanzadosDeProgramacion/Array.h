@@ -1,5 +1,11 @@
 #pragma once
 
+// if not defined
+
+#ifndef ARRAY_H
+#define ARRAY_H
+
+
 // tarea de Juanito Perez y Pepe Toño
 
 #include <iostream>
@@ -270,3 +276,7 @@ public:
 
 
 };
+
+#endif
+
+// end if (terminar el if). En este caso se refiere al if del #ifndef ARRAY_H

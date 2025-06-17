@@ -13,6 +13,7 @@ using namespace std;
 #include "Array.h"
 #include "DynamicArray.h"
 #include "Ejercicio1.h"
+#include "LinkedList.h"
 
 #define MY_ARRAY2_SIZE 20
 
@@ -20,6 +21,8 @@ using namespace std;
 
 #define MY_MACRO int myMacro = 2; \
 					int myOtherMacro;
+
+
 
 // Declarar una variable es:
 // tipo de dato + nombre de la variable + (; / = + valor de la variable;)
@@ -273,7 +276,7 @@ void JuevesYAntesDeMediodia(int dia, int hora, int minuto)
 
 	}
 
-	if(hora < 12)
+	// if(hora < 12)
 
 	// 12:01 es después del mediodía
 	// 12:00 es después del mediodía porque inmediatamente pasan instantes y ya es después del mediodía
@@ -287,7 +290,64 @@ void JuevesYAntesDeMediodia(int dia, int hora, int minuto)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	LinkedList<string> linkedList;
+	linkedList.PushBack("Juan");
+	linkedList.PushBack("Pedro");
+	linkedList.PushBack("Luis");
+	linkedList.PushBack("Maria");
 
+	for (int i = 0; i < 100; i++)
+	{
+		linkedList.PushBack("vacio ");
+	}
+
+	linkedList.PopBack();
+	linkedList.PopBack();
+	linkedList.PopBack();
+	linkedList.PopBack();
+	linkedList.PopBack();
+
+	cerr << "hola, soy cerr " << endl;
+
+
+#define PRUEBAS 0
+
+#if PRUEBAS 1
+	for (int i = 0; i < 10000000; i++)
+	{
+
+		cout << "estamos en modo pruebas" << endl;
+	}
+#endif
+
+
+
+	//for (int i = 0; i < 10000000; i++)
+	//{
+	//	if (PRUEBAS == 1)
+	//	{
+	//		cout << "estamos en modo pruebas" << endl;
+	//	}
+	//}
+
+
+
+	// if de una sola línea
+
+	string dayString = "jueves";
+	if (dayString == "jueves") //condición a checar
+	{
+		// fue verdadero
+		cout << "es jueves" << endl;
+	}
+	else
+	{
+		// fue falso
+		cout << "NO es jueves" << endl;
+	}
+
+	// condición a checar ? fue verdadero : fue falso ;
+	dayString == "jueves" ? cout << "es jueves" << endl : cout << "NO es jueves" << endl;
 
 
 
