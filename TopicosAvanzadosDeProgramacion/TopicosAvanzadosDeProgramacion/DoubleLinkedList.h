@@ -3,93 +3,67 @@
 #include <iostream>
 using namespace std;
 
-/*
-Template <typename T>
-Class List
-{
-	Node<T>* first;
-	int size;
-};
-
-*/
 
 template <typename T>
-class Node
-{
-public:
-	Node()
-	{
-
-	}
-
-	Node(T value) 
-	{
-		data = value;
-	}
-
-	T data;
-	Node<T>* next;
-};
-
-// La lista guarda nodos, pero los nodos guardan T, es decir, cualquier otro tipo de dato.
-
-template <typename T>
-class LinkedList
+class DoubleLinkedList
 {
 private:
+	template <typename T>
+	class Node
+	{
+	public:
+		Node()
+		{
+			// Se podría lograr implementar sin tenerlo aquí, y (en teoría) podrías ganar 
+			// una cantidad pequeña pequeñísima de performance, pero como esto es didáctico, 
+			// les va a ayudar a evitar unos cuantos problemillas.
+			prev = nullptr;
+			next = nullptr;
+		}
+
+		Node(T value)
+		{
+			data = value;
+			// Se podría lograr implementar sin tenerlo aquí, y (en teoría) podrías ganar 
+			// una cantidad pequeña pequeñísima de performance, pero como esto es didáctico, 
+			// les va a ayudar a evitar unos cuantos problemillas.
+			prev = nullptr;
+			next = nullptr;
+		}
+
+		T data;
+		Node<T>* next;
+		Node<T>* prev;
+	};
+
+
+private:
 	Node<T>* first; // un puntero al primer nodo de nuestra lista ligada.
-	// Node<T>* last; // aquí nos quedamos para el jueves 19.
+	Node<T>* last; // aquí nos quedamos para el jueves 19.
 	int count; // número de elementos en esta lista ligada.
 
 public:
-	LinkedList()
+	DoubleLinkedList()
 	{
 		count = 0;
 		first = nullptr;
+		last = nullptr;
 	}
 
 	int GetCount() { return count; };
 
-	Node<T>& Find(T value);
+	DoubleLinkedList::Node<T>& Find(T value);
 
-	Node<T>& FindV2(T value);
+	DoubleLinkedList::Node<T>& FindV2(T value);
 
-	Node<T>& Successor(Node<T>* node)
+	DoubleLinkedList::Node<T>& Successor(DoubleLinkedList::Node<T>* node)
 	{
 		return node->next;
 	}
 
-	Node<T>& Predecessor(Node<T>* node)
+	DoubleLinkedList::Node<T>& Predecessor(DoubleLinkedList::Node<T>* node)
 	{
-		// si es el primer nodo de la lista no tiene predecesor.
-		if (node == first)
-			return nullptr;
-
-		Node<T> *currentNode = first;
-		// mientras no lo encontremos y no hayamos llegado al final de la lista
-		while (currentNode->next != node && currentNode->next != nullptr)
-		{
-			currentNode = currentNode->next;
-		}
-
-		// comprobamos la razón por la cual se salió del ciclo while:
-		// 1) porque sí encontramos al predecesor
-		if (currentNode->next == node)
-		{
-			return currentNode; // regresamos EL PREDECESOR
-		}
-
-		// 2) porque no estaba ese nodo 
-		if (currentNode->next == nullptr)
-		{
-			cerr << "ERROR: se pidió el predecesor de este nodo, pero no existe en esta lista. Verifique que este nodo pertece a esta lista." << endl;
-			return nullptr;
-		}
-
-		// array predecesor:
-		// dame el predecesor del elemento 5
-		// return array[4];
-		// el array es SUPER eficaz para obtener successor y predecessor: una sola operación.
+		return node->prev;
 	}
 
 
@@ -108,7 +82,7 @@ public:
 
 
 template<typename T>
-Node<T>& LinkedList<T>::Find(T value)
+DoubleLinkedList<T>::Node<T>& DoubleLinkedList<T>::Find(T value)
 {
 	// empieza en el primer de la lista
 	Node<T>* currentNode = first; // usamos una variable auxiliar para no tocar la referencia al first.
@@ -140,7 +114,7 @@ Node<T>& LinkedList<T>::Find(T value)
 
 
 template<typename T>
-Node<T>& LinkedList<T>::FindV2(T value)
+DoubleLinkedList<T>::Node<T>& DoubleLinkedList<T>::FindV2(T value)
 {
 	// empieza en el primer de la lista
 	Node<T>* currentNode = first; // usamos una variable auxiliar para no tocar la referencia al first.
@@ -162,7 +136,7 @@ Node<T>& LinkedList<T>::FindV2(T value)
 }
 
 template<typename T>
-void LinkedList<T>::Insert(T valueToInsert, Node<T>* previousNode)
+void DoubleLinkedList<T>::Insert(T valueToInsert, DoubleLinkedList<T>::Node<T>* previousNode)
 {
 	// Un nodo con el valor valueToInsert se insertará como el Next de previousNode.
 
@@ -184,47 +158,46 @@ void LinkedList<T>::Insert(T valueToInsert, Node<T>* previousNode)
 
 // Añade un nuevo nodo al final de la lista.
 template<typename T>
-void LinkedList<T>::PushBack(T value)
+void DoubleLinkedList<T>::PushBack(T value)
 {
 	// Creamos un nuevo nodo con el valor value como su data.
-	Node<T>* newNode = new Node<T>();
-	newNode->data = value;
+	Node<T>* newNode = new Node<T>(value);
 	newNode->next = nullptr;
 
-	// si first es nullptr
-	if (first == nullptr)
+
+	// tenemos que checar que no esté vacía la lista
+	if (last == nullptr)
 	{
-		// entonces no hay ningún nodo, y este que se está agregando se va a volver first.
+		newNode->prev = nullptr;
+		// si se cumple esto, entonces la lista está vacía y newNode se vuelve el único elemento
+		// por tanto, él es first y también es last
 		first = newNode;
+		last = newNode;
 		count++;
-		return; // y ya acabamos, salimos de la función.
+		return; // nos salimos porque ya hicimos todo lo necesario.
 	}
 
-	// Obtenemos el último nodo de la lista. Queremos el nodo cuyo next es igual a nullptr.
-	Node<T>* lastNode = first;
-	while (lastNode->next != nullptr)
-	{
-		lastNode = lastNode->next;
-		operationCounter++;
-	}
-	// cuando salimos de este while, ya estamos en el last node.
-	// ahora ya podemos decirle a lastNode que su next ya no es nullptr, es el nuevo nodo.
-	lastNode->next = newNode;
+	// como ya tenemos el puntero last, que apunta al último elemento de la lista, pues simplemente
+	// le decimos a last que su next es igual a newNode
+	last->next = newNode;
+	newNode->prev = last;
+	// IMPORTANTE: Actualizar que ahora el puntero last apunta a newNode porque ahora él es el verdadero último de la lista.
+	last = newNode; 
 
 	count++; // como metimos un nuevo elemento, aumentamos el contador de elementos.
 }
 
 template<typename T>
-T LinkedList<T>::PopBack()
+T DoubleLinkedList<T>::PopBack()
 {
 	// si no hay ningún elemento.
-	if (count == 0)
+	if (last == nullptr || count == 0 ) // lo dejo con todas las condiciones que significan lo mismo
 	{
 		cout << "Cuidado, estás haciendo pop back cuando ya no hay elementos en esta lista ligada";
 		return {}; // {} es un elemento de tipo T con su valor por defecto, sin importar de qué tipo sea T.
 	}
 
-	// si solo queda un elemento, entonces lo manejamos de esta manera
+	// si solo queda un elemento, entonces lo manejamos de esta manera porque vamos a dejar la lista vacía
 	if (count == 1)
 	{
 		// obtenemos su data para retornarla.
@@ -232,26 +205,25 @@ T LinkedList<T>::PopBack()
 		// lo borramos y ponemos first como nullptr
 		delete first;
 		first = nullptr;
+		last = nullptr; // este no le hacemos delete porque debe apuntar a la misma memoria que first
 		count--;
 		// regresamos la data
 		return data;
 	}
 
-	// tenemos que encontrar el penúltimo nodo realmente, por eso usamos "lastNode->next->next != nullptr"
-	// encontrar el último elemento de la lista y luego quitarlo.
-	Node<T>* penultimateNode = first;
-	while (	penultimateNode->next->next != nullptr)
-	{
-		penultimateNode = penultimateNode->next;
-	}
+	// ya sabemos que el último nodo es last
+	// y sabemos que el penúltimo nodo va a ser el last->prev
+	Node<T>* penultimateNode = last->prev;
 
 	// guardamos la data del último nodo
 	T data = penultimateNode->next->data;
 
 	// ya que tenemos la data borramos al último nodo
-	delete penultimateNode->next;
+	delete last;
 	penultimateNode->next = nullptr;
+	last = penultimateNode;
 	count--;
 
 	return data;
 }
+
