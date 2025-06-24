@@ -14,6 +14,7 @@ using namespace std;
 #include "DynamicArray.h"
 #include "Ejercicio1.h"
 #include "LinkedList.h"
+#include "SentinelLinkedList.h"
 
 #define MY_ARRAY2_SIZE 20
 
@@ -306,6 +307,15 @@ int main()
 	linkedList.PopBack();
 	linkedList.PopBack();
 	linkedList.PopBack();
+
+
+	SentinelLinkedList<string> sentinelList;
+	sentinelList.PushBack("Pepe");
+	sentinelList.PushBack("Nina");
+	sentinelList.PushBack("Felipe");
+	sentinelList.PushBack("Carlos");
+
+
 
 	cerr << "hola, soy cerr " << endl;
 

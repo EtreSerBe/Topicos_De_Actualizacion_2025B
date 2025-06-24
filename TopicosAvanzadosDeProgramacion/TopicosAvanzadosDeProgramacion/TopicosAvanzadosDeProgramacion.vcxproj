@@ -132,6 +132,7 @@
     <ClCompile Include="Ejercicio1.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="SentinelLinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array.h" />
@@ -139,6 +140,7 @@
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Ejercicio1.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="SentinelLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
