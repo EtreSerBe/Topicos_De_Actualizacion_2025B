@@ -15,6 +15,8 @@ using namespace std;
 #include "Ejercicio1.h"
 #include "LinkedList.h"
 #include "SentinelLinkedList.h"
+#include "Stack.h"
+
 
 #define MY_ARRAY2_SIZE 20
 
@@ -287,10 +289,41 @@ void JuevesYAntesDeMediodia(int dia, int hora, int minuto)
 
 }
 
+// EJEMPLO DE FUNCIÓN RECURSIVA
+// regresa true cuando number == 0
+bool llegarACero(int number)
+{
+	if (number < 0) // condición de terminación para evitar un stack overflow al recibir un número negativo.
+		return false;
+
+	if (number == 0) // condición de terminación. Es necesaria para que la función no se mande a llamar infinitamente.
+		return true;
+
+	return llegarACero(number - 1);
+}
+
 // Breakpoint -> break = romper ; point = punto; punto de quiebre
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	Stack<string> stackExample;
+	stackExample.Push("Paper Mario");
+	stackExample.Push("Mario Odyssey");
+	stackExample.Push("Mario Maker");
+	stackExample.Push("Mario y Luigi");
+	cout << stackExample.Pop() << endl;
+	stackExample.Push("Pokemon");
+
+
+	int stackCount = stackExample.Count();
+	for (int i = 0; i < stackExample.Count(); i++)
+	{
+		cout << stackExample.Pop() << endl;
+	}
+
+	
+	// llegarACero(-1); // EJEMPLO DE FUNCIÓN RECURSIVA.
+
 	LinkedList<string> linkedList;
 	linkedList.PushBack("Juan");
 	linkedList.PushBack("Pedro");
