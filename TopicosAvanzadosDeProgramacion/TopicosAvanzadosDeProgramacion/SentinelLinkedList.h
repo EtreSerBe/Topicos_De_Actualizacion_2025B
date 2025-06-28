@@ -83,6 +83,9 @@ public:
 
 	// void Remove(Node<T>* nodeToRemove);
 
+	// Regresa una copia de la data del nodo del frente, pero sin sacarlo de la lista.
+	T Front();
+
 	int operationCounter;
 };
 
@@ -243,6 +246,16 @@ T SentinelLinkedList<T>::PopBack()
 	return data;
 }
 
+template <typename T>
+T SentinelLinkedList<T>::Front()
+{
+	if (count == 0)
+	{
+		cout << "Advertencia, se está tratando de acceder al primer elemento de una SentinelLinkedList, pero está vacía" << endl;
+		return {};
+	}
+	return NIL->next->data;
+}
 
 
 //
