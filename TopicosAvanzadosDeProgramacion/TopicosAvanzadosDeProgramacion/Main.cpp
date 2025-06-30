@@ -17,6 +17,10 @@ using namespace std;
 #include "SentinelLinkedList.h"
 #include "Stack.h"
 
+#include "Perro.h"
+#include "Gato.h"
+#include "Chihuahua.h"
+
 
 #define MY_ARRAY2_SIZE 20
 
@@ -306,6 +310,24 @@ bool llegarACero(int number)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	// Animal myAnimal = Animal();
+	// cout << myAnimal.ObtenerNombre() << " su sonido es: " << myAnimal.Sonido() << endl;
+
+	Animal* myPerroPtr = new Perro();
+	cout << myPerroPtr->ObtenerNombre() << " su sonido es: " << myPerroPtr->Sonido() << endl;
+	delete myPerroPtr;
+
+	Perro myPerro = Perro();
+	cout << myPerro.ObtenerNombre() << " su sonido es: " << myPerro.Sonido() << endl;
+
+	Gato myGato = Gato();
+	cout << myGato.ObtenerNombre() << " su sonido es: " << myGato.Sonido() << endl;
+
+	Chihuahua myChihuahua = Chihuahua();
+	cout << myChihuahua.ObtenerNombre() << " su sonido es: " << myChihuahua.Sonido() << endl;
+
+
+
 	Stack<string> stackExample;
 	stackExample.Push("Paper Mario");
 	stackExample.Push("Mario Odyssey");

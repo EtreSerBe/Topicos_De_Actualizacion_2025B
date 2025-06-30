@@ -127,21 +127,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Chihuahua.cpp" />
     <ClCompile Include="DoubleLinkedList.cpp" />
     <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="Ejercicio1.cpp" />
+    <ClCompile Include="Fungi.cpp" />
+    <ClCompile Include="Gato.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Perro.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="SentinelLinkedList.cpp" />
     <ClCompile Include="Stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="Chihuahua.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Ejercicio1.h" />
+    <ClInclude Include="Fungi.h" />
+    <ClInclude Include="Gato.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Perro.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="SentinelLinkedList.h" />
     <ClInclude Include="Stack.h" />
