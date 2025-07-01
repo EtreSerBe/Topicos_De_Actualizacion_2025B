@@ -1,4 +1,6 @@
 #pragma once
+
+
 #include "Animal.h" // necesito incluir el archivo donde está la clase de la cual se va a heredar.
 #include "Fungi.h"
 
@@ -6,7 +8,7 @@
 using namespace std;
 
 
-class Perro : public Animal, public Fungi
+class Perro : public Animal // , public Fungi
 {
 public:
 	Perro() 
@@ -42,9 +44,9 @@ public:
 
 
 
-	 string Sonido() override {  return "Guauf"; } ;
+	virtual string Sonido() override; //  { ItsAnimal();  return "Guauf"; };
 
-	 int NumeroDePatas() override { return 4; };
+	int NumeroDePatas() override { return 4; };
+
 
 };
-

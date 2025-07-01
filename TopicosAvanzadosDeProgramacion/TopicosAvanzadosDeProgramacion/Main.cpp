@@ -21,6 +21,11 @@ using namespace std;
 #include "Gato.h"
 #include "Chihuahua.h"
 
+#include "DirectXWrapper.h"
+#include "OpenGLWrapper.h"
+
+#include "SQLDatabaseConnector.h"
+#include "SQLLiteDatabaseConnector.h"
 
 #define MY_ARRAY2_SIZE 20
 
@@ -275,7 +280,7 @@ void ImprimirSinChecar()
 
 
 
-void JuevesYAntesDeMediodia(int dia, int hora, int minuto)
+void JuevesYAntesDeMediodia(const int dia, const int hora, const int minuto)
 {
 	// Si es jueves Y es antes del mediodía
 	if (dia == 3 /*3 es jueves*/ && (hora < 12 || hora == 11 && minuto <= 59))
@@ -306,12 +311,83 @@ bool llegarACero(int number)
 	return llegarACero(number - 1);
 }
 
+#define MY_NUMBER 3*15+2
+#define MULTIPLY(a, b) a*b; cout << "hola, estoy en una macro con: " << a << endl;
+
+void FuncionParametrosConstantes(const int i, const int* iPtr)
+{
+	// Si un parámetro es constante, no puede cambiar dentro de la función.
+	// i++;
+
+	// Lo mismo aplica para punteros a constantes, no se puede modificar.
+	// *iPtr = 5;
+}
+
+// pasar parámetros como const evita que dentro de las funciones sufran cualquier tipo de cambio,
+// ya sea la variable completa, o miembros de la variable.
+// si tú NO vas a cambiar nada de un objeto en una llamada a función, ponlo const.
+void ModificarInternamenteAnimal(const Animal &animal)
+{
+	// no te permite tampoco modificar ningúna variable miembro de los objetos que sean const.
+	// animal.name = "Chamuco";
+	 
+	// una variable recibida como const SOLAMENTE puede mandar a llamar funciones const.
+	cout << "mi perrita se llama: " << animal.NombreMasApellido("Gonzalez") << endl;
+}
+
+
 // Breakpoint -> break = romper ; point = punto; punto de quiebre
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
-	// Animal myAnimal = Animal();
-	// cout << myAnimal.ObtenerNombre() << " su sonido es: " << myAnimal.Sonido() << endl;
+
+	int diaEjemplo = 1;
+	// a pesar de que diaEjemplo NO es const, dentro de la función JuevesYAntesDeMediodia no se le 
+	// va a modificar, se le va a tratar como si fuera const.
+	JuevesYAntesDeMediodia(diaEjemplo, 4, 12);
+
+
+	const int ejemploDeMacro = MULTIPLY(3, 5);
+
+	// const nos dice que el valor de esa variable NO puede cambiar JAMÁS.
+	const int constante = 6;
+
+	// constante = 1;
+
+	// para apuntar a esa variable constante, se necesita que el puntero sea de tipo constante también.
+	// un const pointer no te deja modificar los valores de la variable a la que apuntas.
+	const int* ptrAConstante = &constante;
+
+	int myIntNoConstante = 5;
+	ptrAConstante = &myIntNoConstante;
+	// (*ptrAConstante) = 6; // // un const pointer no te deja modificar los valores de la variable a la que apuntas.
+	myIntNoConstante = 12; // esta variable sí se puede modificar, pero el puntero, como es constante, no la puede modificar.
+
+	// Diferencias importantes entre #define y const es que #define va ANTES/DURANTE de compilar,
+	// y const es cuando se le asigne valor por primera vez a esa variable, lo cual puede ser incluso en tiempo de ejecución.
+	// const no se puede usar para #if #iddef #ifndef, etc. mientras que el #define sí.
+
+
+	VirtualPura* APIGrafica = new DirectXWrapper();
+	APIGrafica->InicializarAPIGrafica();
+
+	APIGrafica->RenderizarGeometria();
+	APIGrafica->ApagarAPIGrafica();
+
+	// Patrón de Diseño Fachada (Facade), la parte con que interactúa el usuario siempre es la misma, 
+	// independientemente de qué sistema se esté usando dentro de las funciones de la interfaz.
+	DatabaseInterface* InterfazDeDatabase = new SQLDatabaseConnector();
+	InterfazDeDatabase->ConectarConBaseDeDatos("Alumnos");
+	InterfazDeDatabase->RealizarQuery("SELECT * from ALUMNOS WHERE ALGO");
+	InterfazDeDatabase->DesconectarConBaseDeDatos("Alumnos");
+
+
+	//Animal myAnimal = Animal();
+	//cout << myAnimal.ObtenerNombre() << " su sonido es: " << myAnimal.Sonido() << endl;
+
+	//Animal* myAnimalPtr = new Animal();
+	//cout << myAnimal.ObtenerNombre() << " su sonido es: " << myAnimal.Sonido() << endl;
+
 
 	Animal* myPerroPtr = new Perro();
 	cout << myPerroPtr->ObtenerNombre() << " su sonido es: " << myPerroPtr->Sonido() << endl;
@@ -326,6 +402,8 @@ int main()
 	Chihuahua myChihuahua = Chihuahua();
 	cout << myChihuahua.ObtenerNombre() << " su sonido es: " << myChihuahua.Sonido() << endl;
 
+	// Como es pública, se puede mandar a llamar dentro de cualquier scope.
+	myPerro.ItsAnimalPublic();
 
 
 	Stack<string> stackExample;

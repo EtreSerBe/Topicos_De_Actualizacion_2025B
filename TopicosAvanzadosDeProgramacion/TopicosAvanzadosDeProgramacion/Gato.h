@@ -12,5 +12,7 @@ public:
 
 	// virtual int NumeroDePatas() = 0;
 
+
+
 };
 

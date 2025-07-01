@@ -7,7 +7,6 @@ class Chihuahua :
 {
 public:
 
-    string Sonido() override { return "Guauf Guauf GuaufGuaufGuaufGuaufGuaufGuauf"; };
-
+    string Sonido() override;
 };
 

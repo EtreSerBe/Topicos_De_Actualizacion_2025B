@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Chihuahua.cpp" />
+    <ClCompile Include="DatabaseInterface.cpp" />
+    <ClCompile Include="DirectXWrapper.cpp" />
     <ClCompile Include="DoubleLinkedList.cpp" />
     <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="Ejercicio1.cpp" />
@@ -136,25 +138,35 @@
     <ClCompile Include="Gato.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OpenGLWrapper.cpp" />
     <ClCompile Include="Perro.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="SentinelLinkedList.cpp" />
+    <ClCompile Include="SQLDatabaseConnector.cpp" />
+    <ClCompile Include="SQLLiteDatabaseConnector.cpp" />
     <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="VirtualPura.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Array.h" />
     <ClInclude Include="Chihuahua.h" />
+    <ClInclude Include="DatabaseInterface.h" />
+    <ClInclude Include="DirectXWrapper.h" />
     <ClInclude Include="DoubleLinkedList.h" />
     <ClInclude Include="DynamicArray.h" />
     <ClInclude Include="Ejercicio1.h" />
     <ClInclude Include="Fungi.h" />
     <ClInclude Include="Gato.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="Perro.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="SentinelLinkedList.h" />
+    <ClInclude Include="SQLDatabaseConnector.h" />
+    <ClInclude Include="SQLLiteDatabaseConnector.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="VirtualPura.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
