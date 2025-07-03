@@ -340,6 +340,16 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	DynamicArray<int>* arrayToBeDeleted = new DynamicArray<int>();
+	delete arrayToBeDeleted; // cuando se le hace delete a una variable de memoria dinámica, 
+	// se manda a llamar el destructor de dicha variable, en este caso, el destructor de DynamicArray.
+
+	{
+		DynamicArray<int> staticArrayToBeDeleted = DynamicArray<int>();
+	} // cuando se sale del scope de donde fue declarada una variable, también se manda a llamar
+	// el destructor de dicha variable. 
+
+
 	DynamicArray<int> dynamicThrowArray;
 	dynamicThrowArray.Append(123);
 	dynamicThrowArray.get(0); // este sí lo tiene, no debe dar excepción

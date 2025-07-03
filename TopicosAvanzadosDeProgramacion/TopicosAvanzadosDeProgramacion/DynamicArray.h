@@ -24,11 +24,14 @@ public:
 		copyCounter = 0;
 	}
 
+	// cuando se le da delete a una variable de una clase o estructura, eso manda a llamar
+	// el destructor de dicha clase/estructura, ejecuta el código de dicho destructor,
+	// y una vez que sale de esas llaves es cuando realmente se borra esa variable.
 	~DynamicArray()
 	{
 		// cuando este objeto se destruye, libera la memoria dinámica que pedimos en el constructor.
 		delete[] data; 
-	}
+	} // acá es cuando realmente se borra esta variable.
 
 	void ImprimirElementos()
 	{
