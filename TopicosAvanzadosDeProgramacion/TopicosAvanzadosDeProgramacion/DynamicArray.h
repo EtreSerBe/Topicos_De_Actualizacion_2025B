@@ -76,8 +76,55 @@ public:
 	// este es para no darle acceso directo hacia data a otras clases o partes de código que no tienen por qué tocarlo.
 	T get(int index)
 	{
-		return data[index];
+		// lo que se va a intentar ejecutar, pero que si arroja (throw) alguna excepción, se sale
+		// de estas llaves y se va al catch de abajo.
+		try
+		{
+
+			if (index >= count)
+			{
+				throw std::out_of_range("Cuidado, index está fuera de rango para este dynamicArray porque es demasiado grande");
+				// este return ni siquiera se ejecuta porque el throw de arriba te saca de las llaves 
+				// del try y te manda a las llaves del catch.
+				return {};
+			}
+
+
+			if (index < 0)
+			{
+				throw std::out_of_range("Cuidado, index está fuera de rango porque es negativo para este dynamicArray");
+				// este return ni siquiera se ejecuta porque el throw de arriba te saca de las llaves 
+				// del try y te manda a las llaves del catch.
+				return {};
+			}
+
+			return data[index];
+		}
+		catch (const std::exception& e)
+		{
+			// entre estas llaves del catch es qué va a hacer tu programa según el caso de excepción que sucedió.
+			// En este caso, solo queremos imprimir qué salió mal.
+			cout << e.what() << endl;
+		}
+
+		// este return de valor por defecto es porque salió algo mal, si todo hubiera salido bien,
+		// habríamos ejecutado el de: return data[index];
+		return {};
 	}
+
+	//
+	/*
+	try
+	{
+		myDynamicArray.get(1);
+	}
+	catch(exception e)
+	{
+		cout << e.message << endl;
+	}
+	
+	
+	*/
 
 
 private:

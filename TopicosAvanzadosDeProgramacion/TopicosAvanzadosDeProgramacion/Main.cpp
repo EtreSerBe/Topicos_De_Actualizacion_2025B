@@ -340,6 +340,12 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	DynamicArray<int> dynamicThrowArray;
+	dynamicThrowArray.Append(123);
+	dynamicThrowArray.get(0); // este sí lo tiene, no debe dar excepción
+	dynamicThrowArray.get(1); // este no lo tiene, es mayor que su count.
+	dynamicThrowArray.get(-1); // este no es válido porque es menor que 0 y no hay índices negativos en c++.
+
 
 	int diaEjemplo = 1;
 	// a pesar de que diaEjemplo NO es const, dentro de la función JuevesYAntesDeMediodia no se le 
