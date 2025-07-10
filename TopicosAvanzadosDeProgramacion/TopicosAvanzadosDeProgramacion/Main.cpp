@@ -16,6 +16,7 @@ using namespace std;
 #include "LinkedList.h"
 #include "SentinelLinkedList.h"
 #include "Stack.h"
+#include "BinarySearchTree.h"
 
 #include "Perro.h"
 #include "Gato.h"
@@ -340,6 +341,29 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	BinarySearchTree<float> myTree;
+	myTree.AddWithAddRecursive(5);
+	myTree.AddWithAddRecursive(3);
+	myTree.AddWithAddRecursive(8);
+	myTree.AddWithAddRecursive(2);
+	myTree.AddWithAddRecursive(4);
+	myTree.AddWithAddRecursive(7);
+	myTree.AddWithAddRecursive(9);
+
+	myTree.InOrderWithRecursive();
+
+	myTree.AddWithAddRecursive(2.5f);
+
+	myTree.InOrderWithRecursive();
+
+
+	//map<key, value> o dictionary
+	//map<int, string>
+	// map[0] = Juan;
+	// map[1] = Pepe;
+	// map[2] = Maria;
+
+
 	DynamicArray<int>* arrayToBeDeleted = new DynamicArray<int>();
 	delete arrayToBeDeleted; // cuando se le hace delete a una variable de memoria dinámica, 
 	// se manda a llamar el destructor de dicha variable, en este caso, el destructor de DynamicArray.

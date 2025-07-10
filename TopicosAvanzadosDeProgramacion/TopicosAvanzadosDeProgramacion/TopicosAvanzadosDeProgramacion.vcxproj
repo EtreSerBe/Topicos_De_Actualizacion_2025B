@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="Chihuahua.cpp" />
     <ClCompile Include="DatabaseInterface.cpp" />
     <ClCompile Include="DirectXWrapper.cpp" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Array.h" />
+    <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="Chihuahua.h" />
     <ClInclude Include="DatabaseInterface.h" />
     <ClInclude Include="DirectXWrapper.h" />
