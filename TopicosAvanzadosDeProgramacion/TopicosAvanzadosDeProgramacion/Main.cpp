@@ -40,6 +40,17 @@ using namespace std;
 // Declarar una variable es:
 // tipo de dato + nombre de la variable + (; / = + valor de la variable;)
 
+// tipoDeDato -> int|float|char|etc.
+// nombreDeLaVariable -> [a-zA-Z|_|0-9] + [a-zA-Z|_|0-9]*
+// valorDeLaVariable -> [0-2^64]
+
+// nombreDeLaVariable -> ([a-zA-Z|_|0-9] + [a-zA-Z|_|0-9]*) |  ([a-zA-Z|_|0-9] + [a-zA-Z|_|0-9]*) + ',' + nombreDeLaVariable 
+
+int myIntExample;
+int myIntExample2 = 2;
+
+float myFloat, myFloat2, myFloat3;
+
 // tipo de dato + nombre de la variable + ;
 // NOTA: en las variables de memoria estática se les asigna el valor por defecto del tipo de dato.
 int myInt; // aquí no le hemos asignado un valor, entonces trae lo que se conoce como basura.
@@ -352,10 +363,31 @@ int main()
 
 	myTree.InOrderWithRecursive();
 
-	myTree.AddWithAddRecursive(2.5f);
+	// myTree.AddWithAddRecursive(2.5f);
+
+	myTree.AddWithAddRecursive(3.5);
+	myTree.AddWithAddRecursive(4.5);
+	myTree.AddWithAddRecursive(3.75);
+
 
 	myTree.InOrderWithRecursive();
 
+	// myTree.Delete(2); // caso 1 de delete funciona bien ()
+	// myTree.Delete(9);
+
+	// caso 2 de delete fuciona bien.
+	// myTree.Delete(3.5);
+
+
+	// caso 3 de delete funciona bien.
+	// myTree.Delete(3);
+
+
+	bool searchResult = myTree.SearchWithRecursive(9);
+
+	bool searchResult2 = myTree.SearchWithRecursive(10);
+
+	// float successor = myTree.SuccessorValue(7);
 
 	//map<key, value> o dictionary
 	//map<int, string>
