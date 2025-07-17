@@ -137,6 +137,8 @@
     <ClCompile Include="Ejercicio1.cpp" />
     <ClCompile Include="Fungi.cpp" />
     <ClCompile Include="Gato.cpp" />
+    <ClCompile Include="HashTable.cpp" />
+    <ClCompile Include="HashTableChaining.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="Ejercicio1.h" />
     <ClInclude Include="Fungi.h" />
     <ClInclude Include="Gato.h" />
+    <ClInclude Include="HashTable.h" />
+    <ClInclude Include="HashTableChaining.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="OpenGLWrapper.h" />
     <ClInclude Include="Perro.h" />

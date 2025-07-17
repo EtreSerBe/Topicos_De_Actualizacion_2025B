@@ -28,6 +28,9 @@ using namespace std;
 #include "SQLDatabaseConnector.h"
 #include "SQLLiteDatabaseConnector.h"
 
+#include "HashTable.h"
+#include "HashTableChaining.h"
+
 #define MY_ARRAY2_SIZE 20
 
 #define MY_INT int myDefineInt = 2;
@@ -352,6 +355,32 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	//HashTable<int> myHashTable;
+	//myHashTable.Add(17);
+
+	HashTableChaining<int> myHashTableChaining = HashTableChaining<int>(4);
+	myHashTableChaining.Add(39);
+	myHashTableChaining.Add(252);
+	myHashTableChaining.Add(40);
+	myHashTableChaining.Add(0);
+	myHashTableChaining.Add(24);
+
+	myHashTableChaining.Print();
+
+	// checamos contains y luego remove
+	if (!myHashTableChaining.Contains(1234))
+	{
+		cout << "myHashTableChaining no contiene el valor 1234, lo vamos a intentar borrar, para corroborar que no truena" << endl;
+		myHashTableChaining.Remove(1234);
+	}
+	if (myHashTableChaining.Contains(40))
+	{
+		cout << "myHashTableChaining sí contiene el valor 40, ahora lo vamos a borrar" << endl;
+		myHashTableChaining.Remove(40);
+	}
+
+	myHashTableChaining.Print();
+
 	BinarySearchTree<float> myTree;
 	myTree.AddWithAddRecursive(5);
 	myTree.AddWithAddRecursive(3);
