@@ -145,6 +145,7 @@
     <ClCompile Include="Perro.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="SentinelLinkedList.cpp" />
+    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="SQLDatabaseConnector.cpp" />
     <ClCompile Include="SQLLiteDatabaseConnector.cpp" />
     <ClCompile Include="Stack.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Perro.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="SentinelLinkedList.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="SQLDatabaseConnector.h" />
     <ClInclude Include="SQLLiteDatabaseConnector.h" />
     <ClInclude Include="Stack.h" />

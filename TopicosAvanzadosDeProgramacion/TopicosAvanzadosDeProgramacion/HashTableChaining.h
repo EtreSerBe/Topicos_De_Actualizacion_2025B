@@ -14,6 +14,10 @@ class HashTableChaining
 	// un arreglo de N forwards lists, donde cada una corresponde a un índice de la hash table.
 	forward_list<T>* data; 
 	unsigned int arraySize;
+	// unsigned = SIN signo, es decir, no puede ser negativo.
+	
+	// size_t // es solamente un int de 64 bits unsigned (no-negativo).
+	// originalmente, se supone que es el tamaño estándar de las variables (direcciones de memoria) que maneja en el sistema operativo.
 
 public:
 
@@ -35,7 +39,7 @@ public:
 	void Add(T element)
 	{
 		int index = HashFunction(element);
-		data[index].push_front(element);
+		data[index].push_front(element); // esto de aquí es complejidad constante, no aumenta conforme más elementos haya.
 
 		// arraySize = 10
 		// element = 39
@@ -43,6 +47,8 @@ public:
 		// data[index] = element; nos daría que data[9] = 39
 	}
 
+	// aquí, remove SÍ es lineal en el aspecto de que crece conforme crece la cantidad de elementos guardados,
+	// pero no es directamente 'n', si no que es "n/arraySize" (en el caso promedio), lo cual la hace un poco mejor.
 	void Remove(T element)
 	{
 		int index = HashFunction(element);

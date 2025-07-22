@@ -30,6 +30,9 @@ using namespace std;
 
 #include "HashTable.h"
 #include "HashTableChaining.h"
+#include <random>
+
+#include "Singleton.h"
 
 #define MY_ARRAY2_SIZE 20
 
@@ -355,6 +358,21 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	// que la clase en sí, (no un objeto en específico) mande a llamar la función GetInstance.
+	// esto solo es posible con las propiedades estáticas de una clase.
+	Singleton& mySingleton = Singleton::GetInstance();
+	// Siempre que quieran acceder a algo del singleton, es a través de GetInstance.
+
+	// solo existe un objeto de la clase Singleton, y con esta manera de llamarlo obtenemos un referencia a él.
+	// delete mySingleton; // generalmente tú nunca vas a hacer delete directamente a un singleton
+	mySingleton.PrintHello();
+
+
+	mySingleton.FuncionConVariableStatic(5);
+	mySingleton.FuncionConVariableStatic(globalVar);
+	mySingleton.FuncionConVariableStatic(statiGlobalVar);
+
+
 	//HashTable<int> myHashTable;
 	//myHashTable.Add(17);
 
@@ -371,7 +389,7 @@ int main()
 	if (!myHashTableChaining.Contains(1234))
 	{
 		cout << "myHashTableChaining no contiene el valor 1234, lo vamos a intentar borrar, para corroborar que no truena" << endl;
-		myHashTableChaining.Remove(1234);
+		// myHashTableChaining.Remove(1234);
 	}
 	if (myHashTableChaining.Contains(40))
 	{
@@ -380,6 +398,22 @@ int main()
 	}
 
 	myHashTableChaining.Print();
+
+
+	HashTableChaining<int> hashTableChainingExample = HashTableChaining<int>(100);
+
+	// metemos 100 números aleatoreos.
+	for (int i = 0; i < 100; i++)
+	{
+		int randNumber = rand() % 2;
+		hashTableChainingExample.Add(randNumber);
+	}
+	// esperaríamos, en promedio, que a cada índice de la hash table le añadan 10 elementos, 
+	// porque son 10 índices, y 100/100 = 1.
+	hashTableChainingExample.Print();
+
+
+
 
 	BinarySearchTree<float> myTree;
 	myTree.AddWithAddRecursive(5);
