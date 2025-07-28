@@ -34,6 +34,10 @@ using namespace std;
 
 #include "Singleton.h"
 
+#include "EnemigoBase.h"
+#include "EnemigoCuerpoACuerpo.h"
+#include "EnemigoDeRango.h"
+
 #define MY_ARRAY2_SIZE 20
 
 #define MY_INT int myDefineInt = 2;
@@ -358,6 +362,37 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	EnemigoBase* bruto = new EnemigoCuerpoACuerpo(20, "bruto", 10, 5, 5, 2, 2);
+	EnemigoBase* cazador = new EnemigoCuerpoACuerpo(30, "cazador", 30, 10, 2, -1, -2);
+
+	EnemigoBase* sniper = new EnemigoDeRango(10, "sniper", 12, 3, 20, 10, 5);
+
+	EnemigoBase* arrayDeEnemigos[3] = { bruto, cazador, sniper };
+
+	int xJugador = 0;
+	int yJugador = 0;
+	int vidaJugador = 100;
+
+
+	for (int i = 0; i < 20; i++) // 10 turnos. los turnos representarán el tiempo
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (arrayDeEnemigos[j]->YaPuedeAtacar(i))
+			{
+				// si este enemigo puede atacar, ataca
+				arrayDeEnemigos[j]->Atacar(xJugador, yJugador, vidaJugador, i);
+				cout << "vida del jugador tras el ataque: " << vidaJugador << endl;
+			}
+
+		}
+	}
+
+
+
+
+
+
 	// que la clase en sí, (no un objeto en específico) mande a llamar la función GetInstance.
 	// esto solo es posible con las propiedades estáticas de una clase.
 	Singleton& mySingleton = Singleton::GetInstance();
@@ -376,43 +411,9 @@ int main()
 	//HashTable<int> myHashTable;
 	//myHashTable.Add(17);
 
-	HashTableChaining<int> myHashTableChaining = HashTableChaining<int>(4);
-	myHashTableChaining.Add(39);
-	myHashTableChaining.Add(252);
-	myHashTableChaining.Add(40);
-	myHashTableChaining.Add(0);
-	myHashTableChaining.Add(24);
-
-	myHashTableChaining.Print();
-
-	// checamos contains y luego remove
-	if (!myHashTableChaining.Contains(1234))
-	{
-		cout << "myHashTableChaining no contiene el valor 1234, lo vamos a intentar borrar, para corroborar que no truena" << endl;
-		// myHashTableChaining.Remove(1234);
-	}
-	if (myHashTableChaining.Contains(40))
-	{
-		cout << "myHashTableChaining sí contiene el valor 40, ahora lo vamos a borrar" << endl;
-		myHashTableChaining.Remove(40);
-	}
-
-	myHashTableChaining.Print();
-
-
-	HashTableChaining<int> hashTableChainingExample = HashTableChaining<int>(100);
-
-	// metemos 100 números aleatoreos.
-	for (int i = 0; i < 100; i++)
-	{
-		int randNumber = rand() % 2;
-		hashTableChainingExample.Add(randNumber);
-	}
-	// esperaríamos, en promedio, que a cada índice de la hash table le añadan 10 elementos, 
-	// porque son 10 índices, y 100/100 = 1.
-	hashTableChainingExample.Print();
-
-
+	// Al mover todo el código de ejemplo del HashTableChaining a esta función,
+	// bajamos el acoplamiento sin reducir la cohesión.
+	HashTableChainingExample();
 
 
 	BinarySearchTree<float> myTree;
