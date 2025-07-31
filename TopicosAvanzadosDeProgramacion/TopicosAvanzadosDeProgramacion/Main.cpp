@@ -38,6 +38,10 @@ using namespace std;
 #include "EnemigoCuerpoACuerpo.h"
 #include "EnemigoDeRango.h"
 
+#include "GrupoDeFigurasComposite.h"
+#include "FiguraComposite.h"
+#include "TextoComposite.h"
+
 #define MY_ARRAY2_SIZE 20
 
 #define MY_INT int myDefineInt = 2;
@@ -362,6 +366,40 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+
+
+	Composite* grupoA = new GrupoDeFigurasComposite("Carpeta A");
+	Composite* grupoAPuntoA = new GrupoDeFigurasComposite("Carpeta A.A");
+	Composite* grupoAPuntoB = new GrupoDeFigurasComposite("Carpeta A.B");
+	Composite* figuraAPuntoC = new FiguraComposite("Archivo A.C");
+	Composite* textoAPuntoD = new TextoComposite("Texto A.D");
+
+	Composite* figuraAPuntoAPuntoA = new FiguraComposite("Archivo A.A.A");
+	Composite* figuraAPuntoAPuntoB = new FiguraComposite("Archivo A.A.B");
+	Composite* figuraAPuntoBPuntoA = new FiguraComposite("Archivo A.B.A");
+
+	dynamic_cast<GrupoDeFigurasComposite*>(grupoA)->elementos.push_back(grupoAPuntoA);
+	//grupoA->elementos.push_back(grupoAPuntoB);
+	//grupoA->elementos.push_back(figuraAPuntoC);
+	//grupoA->elementos.push_back(textoAPuntoD);
+
+	//grupoAPuntoA->elementos.push_back(figuraAPuntoAPuntoA);
+	//grupoAPuntoA->elementos.push_back(figuraAPuntoAPuntoB);
+
+	grupoAPuntoB->AddElement(figuraAPuntoBPuntoA);
+
+	// no va a hacer nada, pero me deja hacerlo.
+	textoAPuntoD->AddElement(figuraAPuntoBPuntoA);
+
+
+	grupoA->Render();
+
+
+
+
+
+
+
 	EnemigoBase* bruto = new EnemigoCuerpoACuerpo(20, "bruto", 10, 5, 5, 2, 2);
 	EnemigoBase* cazador = new EnemigoCuerpoACuerpo(30, "cazador", 30, 10, 2, -1, -2);
 

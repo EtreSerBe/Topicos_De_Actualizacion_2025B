@@ -130,6 +130,7 @@
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="Chihuahua.cpp" />
+    <ClCompile Include="Composite.cpp" />
     <ClCompile Include="DatabaseInterface.cpp" />
     <ClCompile Include="DirectXWrapper.cpp" />
     <ClCompile Include="DoubleLinkedList.cpp" />
@@ -138,8 +139,10 @@
     <ClCompile Include="EnemigoBase.cpp" />
     <ClCompile Include="EnemigoCuerpoACuerpo.cpp" />
     <ClCompile Include="EnemigoDeRango.cpp" />
+    <ClCompile Include="FiguraComposite.cpp" />
     <ClCompile Include="Fungi.cpp" />
     <ClCompile Include="Gato.cpp" />
+    <ClCompile Include="GrupoDeFigurasComposite.cpp" />
     <ClCompile Include="HashTable.cpp" />
     <ClCompile Include="HashTableChaining.cpp" />
     <ClCompile Include="LinkedList.cpp" />
@@ -153,6 +156,7 @@
     <ClCompile Include="SQLDatabaseConnector.cpp" />
     <ClCompile Include="SQLLiteDatabaseConnector.cpp" />
     <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="TextoComposite.cpp" />
     <ClCompile Include="VirtualPura.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +164,7 @@
     <ClInclude Include="Array.h" />
     <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="Chihuahua.h" />
+    <ClInclude Include="Composite.h" />
     <ClInclude Include="DatabaseInterface.h" />
     <ClInclude Include="DirectXWrapper.h" />
     <ClInclude Include="DoubleLinkedList.h" />
@@ -168,8 +173,10 @@
     <ClInclude Include="EnemigoBase.h" />
     <ClInclude Include="EnemigoCuerpoACuerpo.h" />
     <ClInclude Include="EnemigoDeRango.h" />
+    <ClInclude Include="FiguraComposite.h" />
     <ClInclude Include="Fungi.h" />
     <ClInclude Include="Gato.h" />
+    <ClInclude Include="GrupoDeFigurasComposite.h" />
     <ClInclude Include="HashTable.h" />
     <ClInclude Include="HashTableChaining.h" />
     <ClInclude Include="LinkedList.h" />
@@ -182,6 +189,7 @@
     <ClInclude Include="SQLDatabaseConnector.h" />
     <ClInclude Include="SQLLiteDatabaseConnector.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="TextoComposite.h" />
     <ClInclude Include="VirtualPura.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
