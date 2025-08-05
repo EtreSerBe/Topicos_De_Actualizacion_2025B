@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 #include <time.h>
+#include "ParametrosEnemigo.h"
+#include <cstdlib>
+#include <ctime>
 
 class EnemigoBase
 {
@@ -26,6 +29,10 @@ public:
 		tiempoDeUltimoAtaque = 0;
 		vidaActual = vidaMaxima;
 	}
+
+	EnemigoBase()
+	{ }
+
 
 	// NO OLVIDEN QUE SEA VIRTUAL
 	virtual ~EnemigoBase()
@@ -58,6 +65,25 @@ public:
 		return false;
 	}
 
+
+
+protected:
+	void InicializarConParametros(ParametrosEnemigo* parametros, int posicionX = 0, int posicionY = 0)
+	{
+		srand(time(0)); // inicializar la semilla del random para que sí sea random.
+
+		this->posicionX = posicionX;
+		this->posicionY = posicionY;
+
+		vidaMaxima = parametros->vidaMinima + (rand() % (parametros->vidaMaxima - parametros->vidaMinima + 1));
+		danoDelAtaque = parametros->danoMinimo + (rand() % (parametros->danoMaximo - parametros->danoMinimo + 1));
+		frecuenciaDeAtaque = parametros->frecuenciaMinimaAtaque + static_cast<float>(rand()) /
+			(static_cast<float>(RAND_MAX / (parametros->frecuenciaMaximaAtaque - parametros->frecuenciaMinimaAtaque)));
+
+		distanciaDeAtaque = parametros->distanciaMinimaAtaque + static_cast<float>(rand()) /
+			(static_cast<float>(RAND_MAX / (parametros->distanciaMaximaAtaque - parametros->distanciaMinimaAtaque)));
+	}
+
 	// si yo heredo esta clase base que tiene un "número de balas", pero la clase que lo hereda no
 	// tiene una pistola, ¿enhtonces para qué quiere un número de balas?
 	// int numeroDeBalas;
@@ -72,5 +98,7 @@ public:
 	float tiempoDeUltimoAtaque;
 	int posicionX;
 	int posicionY;
+
+
 
 };

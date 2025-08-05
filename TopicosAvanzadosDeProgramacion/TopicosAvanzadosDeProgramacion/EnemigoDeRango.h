@@ -2,6 +2,9 @@
 #include "EnemigoBase.h"
 
 #include <math.h>
+#include "ParametrosEnemigo.h"
+#include <cstdlib>
+#include <ctime>
 
 class EnemigoDeRango :
     public EnemigoBase
@@ -17,6 +20,12 @@ public:
             frecuenciaDeAtaque, distanciaDeAtaque, posicionX, posicionY)
     {
         cantidadDeBalas = 2;
+    }
+
+    EnemigoDeRango(ParametrosEnemigo* parametros, int posicionX = 0, int posicionY = 0)
+    {
+        nombre = "Sniper";
+        InicializarConParametros(parametros, posicionX, posicionY);
     }
 
     ~EnemigoDeRango() override = default;

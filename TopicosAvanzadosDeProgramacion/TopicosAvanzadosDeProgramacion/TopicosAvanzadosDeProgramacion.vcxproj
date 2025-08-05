@@ -139,6 +139,8 @@
     <ClCompile Include="EnemigoBase.cpp" />
     <ClCompile Include="EnemigoCuerpoACuerpo.cpp" />
     <ClCompile Include="EnemigoDeRango.cpp" />
+    <ClCompile Include="FactoryEnemigos.cpp" />
+    <ClCompile Include="FactoryEnemigosRango.cpp" />
     <ClCompile Include="FiguraComposite.cpp" />
     <ClCompile Include="Fungi.cpp" />
     <ClCompile Include="Gato.cpp" />
@@ -149,9 +151,11 @@
     <ClCompile Include="LQueue.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OpenGLWrapper.cpp" />
+    <ClCompile Include="ParametrosEnemigo.cpp" />
     <ClCompile Include="Perro.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="SentinelLinkedList.cpp" />
+    <ClCompile Include="SimpleFactoryEnemigos.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="SQLDatabaseConnector.cpp" />
     <ClCompile Include="SQLLiteDatabaseConnector.cpp" />
@@ -173,6 +177,8 @@
     <ClInclude Include="EnemigoBase.h" />
     <ClInclude Include="EnemigoCuerpoACuerpo.h" />
     <ClInclude Include="EnemigoDeRango.h" />
+    <ClInclude Include="FactoryEnemigos.h" />
+    <ClInclude Include="FactoryEnemigosRango.h" />
     <ClInclude Include="FiguraComposite.h" />
     <ClInclude Include="Fungi.h" />
     <ClInclude Include="Gato.h" />
@@ -182,9 +188,11 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LQueue.h" />
     <ClInclude Include="OpenGLWrapper.h" />
+    <ClInclude Include="ParametrosEnemigo.h" />
     <ClInclude Include="Perro.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="SentinelLinkedList.h" />
+    <ClInclude Include="SimpleFactoryEnemigos.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SQLDatabaseConnector.h" />
     <ClInclude Include="SQLLiteDatabaseConnector.h" />

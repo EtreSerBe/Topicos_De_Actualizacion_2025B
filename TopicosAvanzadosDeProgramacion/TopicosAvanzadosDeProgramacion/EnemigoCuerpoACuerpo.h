@@ -20,6 +20,12 @@ public:
         reduccionDeDano = 2;
     }
 
+    EnemigoCuerpoACuerpo(ParametrosEnemigo* parametros, int posicionX = 0, int posicionY = 0)
+    {
+        nombre = "Melee";
+        InicializarConParametros(parametros, posicionX, posicionY);
+    }
+
     ~EnemigoCuerpoACuerpo() override = default;
 
 

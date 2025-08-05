@@ -42,6 +42,11 @@ using namespace std;
 #include "FiguraComposite.h"
 #include "TextoComposite.h"
 
+#include "FactoryEnemigos.h"
+#include "FactoryEnemigosRango.h"
+
+#include "SimpleFactoryEnemigos.h"
+
 #define MY_ARRAY2_SIZE 20
 
 #define MY_INT int myDefineInt = 2;
@@ -367,6 +372,31 @@ void ModificarInternamenteAnimal(const Animal &animal)
 int main()
 {
 
+	FactoryEnemigos* factoryEnemigosRango = new FactoryEnemigosRango(10, 5, 15, 5, 1, 5);
+	EnemigoBase* mySniper = factoryEnemigosRango->MetodoFabrica();
+	EnemigoBase* mySniper1 = factoryEnemigosRango->MetodoFabrica();
+	EnemigoBase* mySniper2 = factoryEnemigosRango->MetodoFabrica();
+	EnemigoBase* mySniper3 = factoryEnemigosRango->MetodoFabrica();
+
+
+	factoryEnemigosRango = new FactoryEnemigosRango(10, 5, 15, 5, 5, 10);
+
+	ParametrosEnemigo parametrosMelee = ParametrosEnemigo(20, 10, 10, 5, 1, 5, 10, 1);
+	ParametrosEnemigo parametrosSniper = ParametrosEnemigo(10, 5, 7, 2, 0.5, 5, 25, 10);
+	ParametrosEnemigo parametrosSniperDificil = ParametrosEnemigo(100, 50, 70, 20, 0.5, 5, 250, 5);
+
+
+	SimpleFactoryEnemigos simpleFactory;
+	EnemigoBase* meleeDeSimple = simpleFactory.CrearProducto(ETiposDeEnemigos::Melee, & parametrosMelee);
+	EnemigoBase* sniperDeSimple = simpleFactory.CrearProducto(ETiposDeEnemigos::Sniper, &parametrosSniper);
+	EnemigoBase* sniperDificilDeSimple = simpleFactory.CrearProducto(ETiposDeEnemigos::Sniper, &parametrosSniperDificil);
+
+
+	// presione 1 para la tarea de ListasLigadas
+	// presione 2 para la tarea de Doblemente Ligadas
+	// presione 3 para la tarea de dynamic arrays
+
+
 
 	Composite* grupoA = new GrupoDeFigurasComposite("Carpeta A");
 	Composite* grupoAPuntoA = new GrupoDeFigurasComposite("Carpeta A.A");
@@ -397,7 +427,7 @@ int main()
 
 
 
-
+	// EnemigoBase* enemigos = new EnemigoBase[100];
 
 
 	EnemigoBase* bruto = new EnemigoCuerpoACuerpo(20, "bruto", 10, 5, 5, 2, 2);
