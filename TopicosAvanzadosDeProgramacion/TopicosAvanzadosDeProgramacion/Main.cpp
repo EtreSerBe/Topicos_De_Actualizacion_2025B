@@ -371,6 +371,51 @@ void ModificarInternamenteAnimal(const Animal &animal)
 // Tarea de: Juanito Pérez y Pepe Toño 
 int main()
 {
+	// es solo un puntero al caracter inicial de la cadena de texto (de la oración, pues).
+	// un caracter especial existe únicamente para decir "aquí se termina una cadena de texto".
+	// a ese caracter se le llama el caracter nulo. '\0'
+	const char* myString = "hola mundo\0 soy la continuación"; 
+	//  esto de "soy la continuación" no lo lee, porque solamente lee hasta donde está el caracter nulo.
+
+	// '\n' // un enter, básicamente lo mismo que endl.
+
+	string myStringClass = "hola mundo\0 soy la continuación";
+	myStringClass += " yo soy texto añadido extra";
+
+	cout << "myString:" << myString << endl;
+	cout << "myStringClass: " << myStringClass << endl;
+
+	const char* myStringSinCaracterNulo = "hola mundo no tengo nulo"; // lleva implícito que al final lleva +'\n';
+
+	char* myCharArray = new char[4];
+	myCharArray[0] = 'h';
+	myCharArray[1] = 'o';
+	myCharArray[2] = 'l';
+	myCharArray[3] = 'a';
+
+
+	int i = 0;
+	while (myString[i] != '\0')
+	{
+		cout << myString[i] << '\n';
+		i++;
+	}
+
+	i = 0;
+	while (myStringSinCaracterNulo[i] != '\0')
+	{
+		cout << myStringSinCaracterNulo[i] << '\n';
+		i++;
+	}
+
+	// este caso de aquí ejemplifica bien lo que puede pasar cuando no se tiene el caracter nulo.
+	i = 0;
+	while (myCharArray[i] != '\0')
+	{
+		cout << myCharArray[i] << '\n';
+		i++;
+	}
+	// NOTA: No estoy seguro de por qué solamente llega hasta 12 iteraciones. Probablemente debe haber algún mecanismo de protección.
 
 	FactoryEnemigos* factoryEnemigosRango = new FactoryEnemigosRango(10, 5, 15, 5, 1, 5);
 	EnemigoBase* mySniper = factoryEnemigosRango->MetodoFabrica();
